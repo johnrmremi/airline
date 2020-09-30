@@ -7,9 +7,9 @@ before_install:
     - "python setup.py install"
 install:
     # - easy_install distribute
-    # - pip install -r requirements.txt
+    - pip install -r requirements.txt
     # - python -m pip install -r requirements.txt
     # - python -m pip install -r requirements-test.txt
-    - python -m pip install -U pip setuptools
+    # - python -m pip install -U pip setuptools
 script:
     - python manage.py test
