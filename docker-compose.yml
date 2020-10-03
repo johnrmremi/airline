@@ -1,0 +1,27 @@
+version: '3'
+
+services: 
+    db:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: jsupa
+    migration:
+        build: .
+        command: python manage.py
+        volumes: 
+            # - .:/usr/src/app
+            - .:/app
+        depends_on: 
+            - db
+
+    web:
+        build: .
+        command: python manage.py runserver 0.0.0.0:8000
+        volumes: 
+            # - .:/usr/src/app
+            - .:/app
+        ports: 
+            - "8000:8000"
+        depends_on: 
+            - db
+            # - migration
